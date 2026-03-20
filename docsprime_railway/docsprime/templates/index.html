@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docsprime — Inteligência Documental</title>
+
+  <!-- Google Fonts: Bebas Neue (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+
+    <!-- Logo (espaço reservado — não altere) -->
+    <a href="#hero" class="nav-logo" aria-label="Docsprime">
+      <div class="logo-placeholder">
+        <span class="logo-icon">▣</span>
+        <span class="logo-text">Docsprime</span>
+      </div>
+    </a>
+
+    <!-- Links desktop -->
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#numeros">Números</a></li>
+      <li><a href="#depoimentos">Clientes</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+
+    <!-- CTA navbar -->
+    <a href="#contato" class="btn btn-outline nav-cta">Fale conosco</a>
+
+    <!-- Hambúrguer mobile -->
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Menu mobile -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#sobre"       class="mobile-link">Sobre</a></li>
+      <li><a href="#servicos"    class="mobile-link">Serviços</a></li>
+      <li><a href="#numeros"     class="mobile-link">Números</a></li>
+      <li><a href="#depoimentos" class="mobile-link">Clientes</a></li>
+      <li><a href="#contato"     class="mobile-link">Contato</a></li>
+    </ul>
+    <a href="#contato" class="btn btn-primary mobile-cta">Fale conosco</a>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     1. HERO
+============================================================ -->
+<section class="hero" id="hero">
+  <!-- Grade decorativa de fundo -->
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <!-- Orbes de luz -->
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+
+  <div class="hero-content reveal">
+    <span class="hero-badge">ECM · BPM · Cloud</span>
+    <h1 class="hero-title">
+      Documentos<br/>
+      <em>sob controle.</em><br/>
+      Processos<br/>
+      <em>em movimento.</em>
+    </h1>
+    <p class="hero-sub">
+      A plataforma que digitaliza, organiza e automatiza o fluxo documental
+      da sua empresa — do protocolo ao arquivo histórico.
+    </p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn btn-primary">Solicitar demonstração</a>
+      <a href="#servicos" class="btn btn-ghost">Ver serviços ↓</a>
+    </div>
+  </div>
+
+  <!-- Bloco flutuante de estatística rápida -->
+  <div class="hero-float reveal reveal-delay-2">
+    <div class="float-stat">
+      <strong>500+</strong>
+      <span>empresas confiam<br/>na Docsprime</span>
+    </div>
+    <div class="float-divider"></div>
+    <div class="float-stat">
+      <strong>10M+</strong>
+      <span>documentos<br/>gerenciados</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     2. SOBRE
+============================================================ -->
+<section class="sobre" id="sobre">
+  <div class="container">
+
+    <div class="sobre-header reveal">
+      <span class="label">Sobre nós</span>
+      <h2>Uma empresa construída<br/>para simplificar o complexo</h2>
+    </div>
+
+    <div class="sobre-body">
+      <p class="sobre-text reveal">
+        Desde 2012 a Docsprime ajuda organizações a transformar pilhas de documentos
+        em ativos digitais inteligentes. Combinamos tecnologia ECM de ponta com
+        automação BPM para que sua equipe gaste menos tempo procurando informação
+        e mais tempo criando valor.
+      </p>
+
+      <!-- Cards Missão / Visão / Valores -->
+      <div class="mvv-grid">
+        {% set mvv = [
+          ("🎯", "Missão", "Simplificar a gestão documental e de processos, tornando as organizações mais ágeis e eficientes."),
+          ("🔭", "Visão",  "Ser a principal plataforma de inteligência documental da América Latina até 2030."),
+          ("💎", "Valores","Inovação contínua, transparência com clientes, segurança dos dados e resultado mensurável.")
+        ] %}
+        {% for icon, titulo, texto in mvv %}
+        <div class="mvv-card reveal">
+          <span class="mvv-icon">{{ icon }}</span>
+          <h3>{{ titulo }}</h3>
+          <p>{{ texto }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     3. LINHA DO TEMPO
+============================================================ -->
+<section class="timeline-sec" id="timeline">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="label">Nossa história</span>
+      <h2>Uma trajetória de evolução</h2>
+    </div>
+
+    <div class="timeline">
+      {% for item in timeline %}
+      <div class="tl-item reveal">
+        <div class="tl-year">{{ item.year }}</div>
+        <div class="tl-connector">
+          <div class="tl-dot"></div>
+          {% if not loop.last %}<div class="tl-line"></div>{% endif %}
+        </div>
+        <div class="tl-card">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     4. SERVIÇOS
+============================================================ -->
+<section class="servicos" id="servicos">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="label">O que fazemos</span>
+      <h2>Soluções para cada etapa<br/>do seu fluxo documental</h2>
+    </div>
+
+    <div class="services-grid">
+      {% for s in services %}
+      <div class="service-card reveal">
+        <div class="service-icon">{{ s.icon }}</div>
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.desc }}</p>
+        <a href="#contato" class="service-link">Saiba mais →</a>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     5. NÚMEROS (contadores animados)
+============================================================ -->
+<section class="numeros" id="numeros">
+  <div class="container">
+    <div class="stats-grid">
+      {% for s in stats %}
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="{{ s.number }}" data-suffix="{{ s.suffix }}">
+          0{{ s.suffix }}
+        </div>
+        <div class="stat-label">{{ s.label }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     6. DEPOIMENTOS
+============================================================ -->
+<section class="depoimentos" id="depoimentos">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <span class="label">Clientes</span>
+      <h2>Quem já transformou<br/>sua operação</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      {% for t in testimonials %}
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">"{{ t.text }}"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">{{ t.initials }}</div>
+          <div>
+            <strong>{{ t.name }}</strong>
+            <span>{{ t.role }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     7. CONTATO
+============================================================ -->
+<section class="contato" id="contato">
+  <div class="container">
+
+    <div class="contato-inner">
+
+      <!-- Texto à esquerda -->
+      <div class="contato-info reveal">
+        <span class="label">Contato</span>
+        <h2>Vamos conversar<br/>sobre o seu projeto?</h2>
+        <p>Preencha o formulário e nossa equipe entrará em contato em até 1 dia útil para agendar uma demonstração sem compromisso.</p>
+
+        <ul class="contato-details">
+          <li>📍 São Paulo, SP — Brasil</li>
+          <li>📧 contato@docsprime.com.br</li>
+          <li>📞 (11) 3000-0000</li>
+        </ul>
+      </div>
+
+      <!-- Formulário à direita -->
+      <div class="contato-form-wrap reveal reveal-delay-1">
+        <form id="contatoForm" novalidate>
+
+          <div class="form-group">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" placeholder="João Silva" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail corporativo</label>
+            <input type="email" id="email" name="email" placeholder="joao@empresa.com.br" required />
+          </div>
+
+          <div class="form-group">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Empresa S.A." />
+          </div>
+
+          <div class="form-group">
+            <label for="mensagem">Como podemos ajudar?</label>
+            <textarea id="mensagem" name="mensagem" rows="4"
+              placeholder="Descreva brevemente o seu desafio ou necessidade..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            Enviar mensagem
+          </button>
+
+          <!-- Feedback de envio -->
+          <div class="form-feedback" id="formFeedback" aria-live="polite"></div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo-icon">▣</span>
+      <span class="logo-text">Docsprime</span>
+      <p>Inteligência documental para empresas que crescem.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <p class="footer-copy">© 2024 Docsprime. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     SCRIPTS
+============================================================ -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
